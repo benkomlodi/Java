@@ -1,10 +1,9 @@
 package hazi;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 public class Titkosit {
 
@@ -24,6 +23,12 @@ public class Titkosit {
         String line = null;
 
         BufferedReader inFile = new BufferedReader(new FileReader(args[0]));
+
+        StringTokenizer tokens = new StringTokenizer(args[0], ".", false);
+        String filename = tokens.nextToken()+"_titkositott."+tokens.nextToken();
+
+        BufferedWriter out = new BufferedWriter(new FileWriter(filename));
+
         try {
             line = inFile.readLine();
             if (line == null) {
@@ -31,22 +36,23 @@ public class Titkosit {
             } else {
                 for(int i = 0; i<line.length(); i++) {
                     if (line.charAt(i) == 'z') {
-                        System.out.print("a");
+                        out.write('a');
                     } else if (dictionary.containsKey(line.charAt(i))) {
                         int b = dictionary.get(line.charAt(i))+1;
-                        System.out.print((char) b);
+                        out.write((char) b);
                     } else if (line.charAt(i) == ' ') {
-                        System.out.print(' ');
+                        out.write(' ');
                     } else {
                         int a = line.charAt(i) + 1;
-                        System.out.print((char) a);
+                        out.write((char) a);
                     }
-
                 }
             }
+            System.out.println("A titkosított állomány "+filename+" néven elkészült!");
         } catch (IOException e) {
             System.out.println("Hiba történt!");
         }
         inFile.close();
+        out.close();
     }
 }
