@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Bejelentkezés</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+
+<style>
+  .content {
+    max-width: 500px;
+    margin: auto;
+  }
+</style>
+<body>
+<!-- partial:index.partial.html -->
+<div class="content" id="login-form-wrap">
+  <h2>Bejelentkezés</h2>
+  <p class="fw-lighter">Kérlek jelentkezz be!</p>
+  <form id="login-form" action="#" th:action="@{/login}" method="post">
+    <p>
+    <input type="text" id="username" name="username" placeholder="Felhasználónév">
+    </p>
+    <p>
+    <input type="password" id="password" name="password" placeholder="Jelszó">
+    </p>
+    <p>
+    <input type="submit" id="login" value="Bejelentkezés">
+    </p>
+  </form>
+  <div id="create-account-wrap">
+    <p>Még nem regisztráltál? <a th:href="@{/register}">Regisztrálj!</a></p>
+  </div><!--create-account-wrap-->
+</div><!--login-form-wrap-->
+<!-- partial -->
+  
+</body>
+</html>
